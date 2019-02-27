@@ -17,7 +17,12 @@ class CreateTableMessages extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('contenu');
-            
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients'); 
+            $table->integer('requete_id')->unsigned();
+            $table->foreign('requete_id')->references('id')->on('requetes'); 
+            $table->integer('employe_id')->unsigned();
+            $table->foreign('employe_id')->references('id')->on('employes'); 
             $table->timestamps();
         });
     }

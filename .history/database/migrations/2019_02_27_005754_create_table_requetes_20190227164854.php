@@ -17,6 +17,9 @@ class CreateTableRequetes extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('contenu');
+            $table->integer('categorie_id')->unsigned()->index();
+            $table->foreign('discussion_id')->references('id')->on('chatter_discussion')->onDelete('cascade');
+
             
             $table->timestamps();
         });

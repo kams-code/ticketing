@@ -17,6 +17,14 @@ class CreateTableRequetes extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('contenu');
+            $table->integer('client_id')->unsigned()->index();
+            $table->integer('categorie_id')->unsigned()->index();
+             $table->foreign('categorie_id')->references('id')->on('categories')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
             
             $table->timestamps();
         });
