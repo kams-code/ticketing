@@ -1,0 +1,67 @@
+/*
+ Theme Name:   Ticketlab Child
+ Theme URI:    http://www.bigbangthemes.net/TicketLab_WP/
+ Description:  Ticketlab Child Theme
+ Author:       BigBangThemes
+ Author URI:   http://themeforest.net/user/bigbangthemes
+ Template:     ticketlab
+ Version:      1.0.0
+*/
+
+#bbt_assignee_popup .popup-title
+{
+    margin: 0 -20px 20px;
+    background: #444;
+    border-radius: 4px 4px 0 0;
+    font-size: 30px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    padding: 53px 0 54px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#bbt_assignee_popup .bbt_popup{
+    padding: 0;
+}
+
+#bbt_assignee_popup .popup_content {
+    overflow-y: inherit;
+    max-height: none;
+    width: 100%;
+    margin-top: 0!important;
+    padding: 0 20px 20px;
+}
+
+#bbt_assignee_popup .btn-submit{
+    margin-top: 20px;
+}
+
+#bbt_topic_popup input.bbt-required, #bbt_topic_popup select.bbt-required ,
+#bbt_topic_popup textarea.bbt-required, #bbt_topic_popup .select2.bbt-required{
+    border: 1px solid red !important;
+}
+
+#bbt_topic_popup .bbp-template-notice{
+    display:none;
+}
+
+.bbt-btn-submit:hover{
+    text-decoration: none;
+}
+
+.agent-topics-form-solve{
+    display: inline-block;
+}
+
+.widget-api .btn.btn-submit-closed,
+.widget-api .btn.btn-submit-closed:active,
+.widget-api .btn.btn-submit-closed:hover{
+    background: #00a4ef;
+}
