@@ -8,9 +8,9 @@
             <h3 class="modal-title">{{ $result->total() }} {{ str_plural('User', $result->count()) }} </h3>
         </div>
         <div class="col-md-7 page-action text-right">
-            @can('add_users')
+         
                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm"> <i class="glyphicon glyphicon-plus-sign"></i> Create</a>
-            @endcan
+            
         </div>
     </div>
 
@@ -23,9 +23,9 @@
                 <th>Email</th>
                 <th>Role</th>
                 <th>Created At</th>
-                @can('edit_users', 'delete_users')
+             
                 <th class="text-center">Actions</th>
-                @endcan
+             
             </tr>
             </thead>
             <tbody>
@@ -37,14 +37,14 @@
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     <td>{{ $item->created_at->toFormattedDateString() }}</td>
 
-                    @can('edit_users')
+                   
                     <td class="text-center">
                         @include('shared._actions', [
                             'entity' => 'users',
                             'id' => $item->id
                         ])
                     </td>
-                    @endcan
+                 
                 </tr>
             @endforeach
             </tbody>

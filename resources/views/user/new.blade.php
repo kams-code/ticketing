@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            {!! Form::open(['route' => ['users.store'] ]) !!}
+            {!! Form::open(['route' => ['users.store'] ,'files'=>true ]) !!}
                 @include('user._form')
                 <!-- Submit Form Button -->
                 {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}

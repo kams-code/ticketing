@@ -19,8 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::group(['prefix' => 'admin'], function()
 {
     Route::resource('organisations','OrganisationController');
 });
+Route::resource('users', 'UserController');
+Route::resource('roles', 'RoleController');
+Route::resource('posts', 'PostController');
+
+Route::resource('clients', 'ClientController');
+Route::resource('chatter_categories', 'ChatterCategoriesController');
+
 

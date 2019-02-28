@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Chatter_categoriesResource;
+use App\Chatter_categories;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::get('/chatter_categories/{chatter_categories}', function(Chatter_categories $chatter_categories) {
+    return new Chatter_categoriesResource($chatter_categories);
+});
+
+Route::get('/chatter_categories', function() {
+    return new Chatter_categoriesResource(Chatter_categories::all());
 });

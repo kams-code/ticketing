@@ -81,6 +81,7 @@ forum:{},
 };
 /* ]]> */
 </script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type='text/javascript' src='../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4' defer='defer'></script>
 <script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1' defer='defer'></script>
 <!--[if lt IE 9]>
@@ -344,6 +345,38 @@ var wpcf7 = {"apiSettings":{"root":"https:\/\/bigbangthemes.net\/TicketLab_WP\/w
 <script type='text/javascript' src='../wp-content/themes/ticketlab/bbt_framework/static/js/bbt-framework5010.js?ver=4.9.8' defer='defer'></script>
 <script type='text/javascript' src='../wp-includes/js/wp-embed.min5010.js?ver=4.9.8' defer='defer'></script>
 <script type='text/javascript' src='../wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min5243.js?ver=5.4.5' defer='defer'></script>
+<script type="text/javascript">
+	TableManageButtons.init();
+	$(document).on('click','#imgpreview',function(){
+		$('#inputimage').trigger('click');
+	});
+	
+	function readURL(input, ids) {
+	  if (input.files && input.files[0]) {
+		  var reader = new FileReader();
+		  
+		  reader.onload = function (e) {
+			  $('#'+ids).attr('src', e.target.result);
+			  var src = $('#'+ids).attr('src');
+			  
+		  }
+		  
+		  reader.readAsDataURL(input.files[0]);
+	  }
+  }
+
+  $(document).on('change','#inputimage',function(){
+	  readURL(this,'imgpreview');
+  });
+  $(document).on('click','.imgpreviewupdate',function(){
+	var id = $(this).attr('data-id');
+		$('#inputimage'+id).trigger('click');
+	});
+  $(document).on('change','.inputimage',function(){
+	var id = $(this).attr('data-id');
+	  readURL(this,'imgpreview'+id);
+  });
+</script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var mc4wp_forms_config = [];

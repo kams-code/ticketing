@@ -40,9 +40,9 @@
             <h3>Roles</h3>
         </div>
         <div class="col-md-7 page-action text-right">
-            @can('add_roles')
+     
                 <a href="#" class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#roleModal"> <i class="glyphicon glyphicon-plus"></i> New</a>
-            @endcan
+         
         </div>
     </div>
 
@@ -58,9 +58,9 @@
             @include('shared._permissions', [
                           'title' => $role->name .' Permissions',
                           'model' => $role ])
-            @can('edit_roles')
+            
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            @endcan
+           
         @endif
 
         {!! Form::close() !!}

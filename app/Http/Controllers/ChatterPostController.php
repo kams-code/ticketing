@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Resources\ClientResource;
 
+use App\Chatter_post;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ChatterPostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return new ClientResource(Article::with(['author', 'comments.author'])->paginate());
+        //
     }
 
     /**
@@ -41,24 +41,21 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Chatter_post  $chatter_post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Chatter_post $chatter_post)
     {
-        ClientResource::withoutWrapping();
-
-        return new ClientResource($id);
-  
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Chatter_post  $chatter_post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Chatter_post $chatter_post)
     {
         //
     }
@@ -67,10 +64,10 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Chatter_post  $chatter_post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Chatter_post $chatter_post)
     {
         //
     }
@@ -78,10 +75,10 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Chatter_post  $chatter_post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Chatter_post $chatter_post)
     {
         //
     }

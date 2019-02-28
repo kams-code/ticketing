@@ -8,10 +8,14 @@ use App\Permission;
 use App\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Image;
+
+use App\Client;
+use App\Employe;
 
 class UserController extends Controller
 {
-    use Authorizable;
+    
 
     /**
      * Display a listing of the resource.
@@ -45,28 +49,61 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'roles' => 'required|min:1'
-        ]);
-
+       
+     
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $request->merge(['image' => $filename ]);
+        }
+     
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
 
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
 
-            $this->syncPermissions($request, $user);
 
             flash('User has been created.');
+
+            if ($request['type']=="Agent") {
+               $employe=new Employe([
+                'user_id'=>$user['id'],
+                'pays'=>$request['pays'],
+                'ville'=>$request['ville'],
+                'adresse'=>$request['adresse'],
+                'image'=>$request['image'],
+               ]                
+
+               );
+            
+            $employe ->save();
+            dd($employe);
+            }  if ($request['type']=="Client") {
+                $Client=new Client([
+                 'user_id'=>$user['id'],
+                 'pays'=>$request['pays'],
+                 'ville'=>$request['ville'],
+                 'adresse'=>$request['adresse'],
+                 'image'=>$request['image'],
+                ]                
+ 
+                );
+                $Client ->save();
+             }
 
         } else {
             flash()->error('Unable to create user.');
         }
 
         return redirect()->route('users.index');
+
+
+        
     }
 
     /**

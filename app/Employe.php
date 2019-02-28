@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employe extends Model
 {
     protected $fillable = [
-        service_id
+        'pays', 'ville', 'adresse','image'
     ];
     
     public function messages(){
