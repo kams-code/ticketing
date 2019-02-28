@@ -26,7 +26,13 @@ class CreateUsersTable extends Migration
 
 
 
-      
+        Schema::table('produiusets', function(Blueprint $table) {
+
+            $table->integer('produitable_id')->unsigned();
+
+            $table->foreign('produitable_id')->references('id')->on('entretoises','lazers');
+
+        });
     }
 
     /**

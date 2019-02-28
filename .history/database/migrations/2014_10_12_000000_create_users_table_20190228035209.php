@@ -26,7 +26,13 @@ class CreateUsersTable extends Migration
 
 
 
-      
+        Schema::table('users', function(Blueprint $table) {
+
+            $table->integer('userable_id')->unsigned();
+
+            $table->foreign('produitable_id')->references('id')->on('entretoises','lazers');
+
+        });
     }
 
     /**

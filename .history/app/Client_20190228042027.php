@@ -23,9 +23,9 @@ class Client extends Model
        return $this->hasOne('App\User');
    }*/
 
-   public function users()
+   public function comments()
    {
-       return $this->morphMany('App\User', 'userable');
+       return $this->morphMany('App\Comment', 'commentable');
    }
 
 }

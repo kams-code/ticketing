@@ -17,14 +17,9 @@ class Employe extends Model
     public function service(){
         return $this->belongsTo('App\Service');
     }
-    /*public function user()
+    public function user()
     {
         return $this->hasOne('App\User');
-    }*/
-
-    public function users()
-    {
-        return $this->morphMany('App\User', 'usertable');
-    }
+    }/
 
 }

@@ -22,9 +22,4 @@ class Employe extends Model
         return $this->hasOne('App\User');
     }*/
 
-    public function users()
-    {
-        return $this->morphMany('App\User', 'usertable');
-    }
-
 }

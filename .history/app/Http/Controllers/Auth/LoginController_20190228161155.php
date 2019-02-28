@@ -49,7 +49,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     { 
         $user = User::get()->where('name','=',$request->get($this->username()))->first();
-    
+    if(true){
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
             ? $this->username()
             : 'name';
@@ -58,16 +58,10 @@ class LoginController extends Controller
             $field => $request->get($this->username()),
             'password' => $request->password,
         ];
-    
+    }
     }
 
-    
-    /**
-    * @param \App\Http\Requests\LoginRequest $request
-    * @return \Illuminate\Http\RedirectResponse
-    */
-    public function submitLogin(LoginRequest $request)
-    {
+
         $authenticated = app('auth')->attempt(
             $request->only('email', 'password'),
             $request->has('remember')
@@ -75,18 +69,17 @@ class LoginController extends Controller
     
         if ($authenticated)
         {
-            $user = app('auth')->user()->userable;
-            if (is_a($user, 'App\Client'))
+            $user = app('auth')->user()->userTypeable;
+            if (is_a($user, 'App\Student'))
             {
                 // Student has logged in...
             }
-            else if (is_a($user, 'App\Employe'))
+            else if (is_a($user, 'App\Teacher'))
             {
                 // Teacher has logged in...
             }
             
             return redirect()->intended();
         }
-    }
 
 }

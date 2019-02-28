@@ -24,7 +24,7 @@ class Employe extends Model
 
     public function users()
     {
-        return $this->morphMany('App\User', 'usertable');
+        return $this->morphMany('App\User', 'commentable');
     }
 
 }

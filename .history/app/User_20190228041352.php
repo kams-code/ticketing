@@ -29,8 +29,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function userable()
-    {
-        return $this->morphTo();
-    }
+    
 }

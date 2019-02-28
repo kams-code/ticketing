@@ -25,7 +25,7 @@ class Client extends Model
 
    public function users()
    {
-       return $this->morphMany('App\User', 'userable');
+       return $this->morphMany('App\User', 'commentable');
    }
 
 }

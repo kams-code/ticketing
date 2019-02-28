@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -49,7 +48,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     { 
         $user = User::get()->where('name','=',$request->get($this->username()))->first();
-    
+if(true){
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
             ? $this->username()
             : 'name';
@@ -58,35 +57,7 @@ class LoginController extends Controller
             $field => $request->get($this->username()),
             'password' => $request->password,
         ];
-    
     }
-
-    
-    /**
-    * @param \App\Http\Requests\LoginRequest $request
-    * @return \Illuminate\Http\RedirectResponse
-    */
-    public function submitLogin(LoginRequest $request)
-    {
-        $authenticated = app('auth')->attempt(
-            $request->only('email', 'password'),
-            $request->has('remember')
-        );
-    
-        if ($authenticated)
-        {
-            $user = app('auth')->user()->userable;
-            if (is_a($user, 'App\Client'))
-            {
-                // Student has logged in...
-            }
-            else if (is_a($user, 'App\Employe'))
-            {
-                // Teacher has logged in...
-            }
-            
-            return redirect()->intended();
-        }
     }
 
 }
