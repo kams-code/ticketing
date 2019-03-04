@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Requete;
+use App\Http\Resources\RequeteResource;
 
 class RequeteController extends Controller
 {
@@ -35,6 +37,21 @@ class RequeteController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function apistore(Request $request)
+    {
+          $Requete = $request->isMethod('put') ? Requete::findOrFail($request->id) : new Requete;
+  if ($request->isMethod('put')) {
+        if($Requete->update($request)) {
+            return new RequeteResource($Requete);
+        }
+     }if ($request->isMethod('post') ) {
+        if($Requete = Requete::create($request) ) {
+            return new RequeteResource($Requete);
+        }
+     }
+             
     }
 
     /**
@@ -80,5 +97,15 @@ class RequeteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apidestroy($id)
+    { 
+      
+        $Requete = Requete::findOrFail($id);
+
+        if($Requete->delete()) {
+            return new RequeteResource($Requete);
+        }    
     }
 }

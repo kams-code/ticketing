@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\ServiceResource;
+use App\Service;
 
 class ServiceController extends Controller
 {
@@ -35,6 +37,21 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function apistore(Request $request)
+    {
+          $Service = $request->isMethod('put') ? Service::findOrFail($request->id) : new Service;
+  if ($request->isMethod('put')) {
+        if($Service->update($request)) {
+            return new ServiceResource($Service);
+        }
+     }if ($request->isMethod('post') ) {
+        if($Service = Service::create($request) ) {
+            return new ServiceResource($Service);
+        }
+     }
+             
     }
 
     /**
@@ -80,5 +97,15 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apidestroy($id)
+    { 
+      
+        $Service = Service::findOrFail($id);
+
+        if($Service->delete()) {
+            return new ServiceResource($Service);
+        }    
     }
 }

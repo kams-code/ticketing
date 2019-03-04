@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Chatter_user_discussion;
 use Illuminate\Http\Request;
+use App\Http\Resources\Chatter_user_discussionResource;
+use App\Chatter_user_discussion;
 
 class ChatterUserDiscussionController extends Controller
 {
@@ -38,13 +39,28 @@ class ChatterUserDiscussionController extends Controller
         //
     }
 
+    public function apistore(Request $request)
+    {
+          $Chatter_user_discussion = $request->isMethod('put') ? Chatter_user_discussion::findOrFail($request->id) : new Chatter_user_discussion;
+  if ($request->isMethod('put')) {
+        if($Chatter_user_discussion->update($request)) {
+            return new Chatter_user_discussionResource($Chatter_user_discussion);
+        }
+     }if ($request->isMethod('post') ) {
+        if($Chatter_user_discussion = Chatter_user_discussion::create($request) ) {
+            return new Chatter_user_discussionResource($Chatter_user_discussion);
+        }
+     }
+             
+    }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Chatter_user_discussion  $chatter_user_discussion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Chatter_user_discussion $chatter_user_discussion)
+    public function show($id)
     {
         //
     }
@@ -52,10 +68,10 @@ class ChatterUserDiscussionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Chatter_user_discussion  $chatter_user_discussion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chatter_user_discussion $chatter_user_discussion)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +80,10 @@ class ChatterUserDiscussionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chatter_user_discussion  $chatter_user_discussion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chatter_user_discussion $chatter_user_discussion)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +91,21 @@ class ChatterUserDiscussionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Chatter_user_discussion  $chatter_user_discussion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chatter_user_discussion $chatter_user_discussion)
+    public function destroy($id)
     {
         //
+    }
+
+    public function apidestroy($id)
+    { 
+      
+        $Chatter_user_discussion = Chatter_user_discussion::findOrFail($id);
+
+        if($Chatter_user_discussion->delete()) {
+            return new Chatter_user_discussionResource($Chatter_user_discussion);
+        }    
     }
 }

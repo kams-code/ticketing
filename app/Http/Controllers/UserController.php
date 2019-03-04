@@ -9,6 +9,7 @@ use App\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use App\Http\Resources\UserResource;
 
 use App\Client;
 use App\Employe;
@@ -105,6 +106,20 @@ class UserController extends Controller
 
         
     }
+    public function apistore(Request $request)
+    {
+          $user = $request->isMethod('put') ? User::findOrFail($request->id) : new User;
+  if ($request->isMethod('put')) {
+        if($user->update($request->except('roles', 'permissions'))) {
+            return new UserResource($user);
+        }
+     }if ($request->isMethod('post') ) {
+        if($user = User::create($request->except('roles', 'permissions')) ) {
+            return new UserResource($user);
+        }
+     }
+             
+    }
 
     /**
      * Display the specified resource.
@@ -189,6 +204,16 @@ class UserController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function apidestroy($id)
+    { 
+    
+        $User = User::findOrFail($id);
+
+        if($User->delete()) {
+            return new UserResource($User);
+        }    
     }
 
     /**

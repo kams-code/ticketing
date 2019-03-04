@@ -31,4 +31,4 @@ Route::resource('posts', 'PostController');
 Route::resource('clients', 'ClientController');
 Route::resource('chatter_categories', 'ChatterCategoriesController');
 
-
+Route::resource('chatter_discussion', 'ChatterDiscussionController');

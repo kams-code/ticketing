@@ -171,7 +171,7 @@ forum:{},
 </li>
 <li id="menu-item-1467" class="tooltip5 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1467"><a href="#">Forum</a>
 <ul class="dropdown-menu" role="menu" >
-	<li id="menu-item-1471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1471"><a href="forums/forum/copyright-legal/index.html">Forum</a></li>
+	<li id="menu-item-1471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1471"><a href="{{route("chatter_discussion.index")}}">Forum</a></li>
 	<li id="menu-item-1468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1468"><a href="forums/topic/how-to-use-your-account-safely-copy/index.html">Solved Ticket</a></li>
 	<li id="menu-item-1469" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1469"><a href="forums/topic/how-to-use-your-account-safely/index.html">Pending Ticket</a></li>
 </ul>

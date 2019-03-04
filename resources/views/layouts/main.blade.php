@@ -190,84 +190,51 @@ forum:{},
 	@yield('content')
 	<!--Main Content End-->
         	<!-- Auth -->
-	<div id="bbt_login_modal" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-dialog modal-md">
-	        <div class="modal-content">
-                	            <div class="modal-header" style="">
-		            	                    <h4 class="modal-title" id="mySmallModalLabel">Log In Now		                    <a class="anchorjs-link" href="#mySmallModalLabel"><span class="anchorjs-icon"></span></a>
-	                    </h4>
-	                
-		            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			            <span aria-hidden="true">×</span>
-		            </button>
-	            </div>
-	            <div class="modal-body">
-	                <div class="row">
-	                    <div class="col-md-6 textAlignCenter">
-	                        <p class="title">Login</p>
-	                        <img src="http://themes.scsnoopyindustri.netdna-cdn.com/TicketLab_WP/wp-content/themes/ticketlab/images/line_blue_xs.png" class="img-responsive" alt="" />
-
-		                    <form action="https://bigbangthemes.net/TicketLab_WP//wp-login.php" method="post" name="loginform">
-		                        <div class="login-details">
-		                            <div class="login-placeholder">
-		                                <input  name="log" id="user" placeholder="Username" type="text">
-		                                <i class="fa fa-user"></i>
-		                            </div>
-		                            <div class="login-placeholder">
-		                                <input name="pwd" id="pass" placeholder="Password" type="password">
-		                                <i class="fa fa-lock"></i>
-		                            </div>
-		                            <a href="https://bigbangthemes.net/TicketLab_WP//wp-login.php?action=lostpassword">Forgot your login details?</a>
-		                            <br/><br/>
-		                            <div class="login-button">
-			                            <input type="submit" name="wp-submit" id="wp-submit" class="bbt-btn-login" value="LOGIN" />
-			                            <input type="hidden" name="testcookie" value="1" />
-			                            <input id="modal-redirect-link" type="hidden" name="redirect_to" value="https://bigbangthemes.net/TicketLab_WP/" />
-		                            </div>
-		                        </div>
-		                    </form>
-	                    </div>
-	                    <div class="col-md-6 textAlignCenter">
-	                        <p class="title">Register</p>
-	                        <img src="http://themes.scsnoopyindustri.netdna-cdn.com/TicketLab_WP/wp-content/themes/ticketlab/images/line_blue_xs.png" class="img-responsive" alt="" />
-
-	                        <div class="login-details">
-		                        <form id="bbt_reg_form" action="/TicketLab_WP/client-dashboard/" method="post">
-			                        <div class="login-placeholder">
-				                        <input  name="username" class="bbt_reg_username" placeholder="Username" type="text">
-				                        <i class="fa fa-user"></i>
-				                        <div class="bbt_registration_error"></div>
-			                        </div>
-		                            <div class="login-placeholder">
-		                                <input name="email" class="bbt_reg_email" placeholder="Email" type="text">
-		                                <i class="fa fa-envelope"></i>
-			                            <div class="bbt_registration_error"></div>
-		                            </div>
-		                            <div class="login-placeholder">
-		                                <input name="password" class="bbt_reg_password" placeholder="Password" type="password">
-		                                <i class="fa fa-lock"></i>
-			                            <div class="bbt_registration_error"></div>
-		                            </div>
-		                            			                        <div class="bbt_registration_error"></div>
-		                            <br/>
-		                            <div class="register-button">
-			                            <input type="submit" name="bbt_form_submit" class="bbt-btn-login" value="REGISTER" />
-		                            </div>
-		                        </form>
-	                        </div>
-						</div>
-	                </div>
-
-	                <div class="social-login">
-													<a href="#" data-app-id="275761936196701" class="btn btn-default btn-submit btn-facebook-login"><i class="fa fa-facebook"></i> Facebook Login</a>
-						
-													<a href="#" class="btn btn-default btn-submit btn-twitter" onclick="window.open('https://bigbangthemes.net/TicketLab_WP/?bbt-tw-login=1','Twitter_Auth','location=0,status=0,width=800,height=600')"><i class="fa fa-twitter"></i> Twitter Login</a>
+			<div id="bbt_login_modal" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+											<div class="modal-header" style="">
+														<h4 class="modal-title" id="mySmallModalLabel">Log In Now		                    <a class="anchorjs-link" href="#mySmallModalLabel"><span class="anchorjs-icon"></span></a>
+									</h4>
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-12 textAlignCenter">
+										<p class="title">Login</p>
+										<img src="themes.scsnoopyindustri.netdna-cdn.com/TicketLab_WP/wp-content/themes/ticketlab/images/line_blue_xs.png" class="img-responsive" alt="" />
+			
+										<form action="https://bigbangthemes.net/TicketLab_WP//wp-login.php" method="post" name="loginform">
+											<div class="login-details">
+												<div class="login-placeholder">
+													<input  name="log" id="user" placeholder="Username" type="text">
+													<i class="fa fa-user"></i>
+												</div>
+												<div class="login-placeholder">
+													<input name="pwd" id="pass" placeholder="Password" type="password">
+													<i class="fa fa-lock"></i>
+												</div>
+												<a href="wp-loginc2b6.html?action=lostpassword">Forgot your login details?</a>
+												<br/><br/>
+												<div class="login-button">
+													<input type="submit" name="wp-submit" id="wp-submit" class="bbt-btn-login" value="LOGIN" />
+													<input type="hidden" name="testcookie" value="1" />
+													<input id="modal-redirect-link" type="hidden" name="redirect_to" value="index.html" />
+												</div>
 											</div>
-		            <div id="bbt_success_message"></div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+										</form>
+									</div>
+								  
+								</div>
+			
+								<div id="bbt_success_message"></div>
+							</div>
+						</div>
+					</div>
+				</div>
         <footer>
 
 

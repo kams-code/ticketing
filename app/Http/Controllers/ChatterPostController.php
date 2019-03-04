@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Chatter_post;
 use Illuminate\Http\Request;
+use App\Http\Resources\Chatter_postResource;
+use App\Chatter_post;
 
 class ChatterPostController extends Controller
 {
@@ -38,13 +39,28 @@ class ChatterPostController extends Controller
         //
     }
 
+    public function apistore(Request $request)
+    {
+          $Chatter_post = $request->isMethod('put') ? Chatter_post::findOrFail($request->id) : new Chatter_post;
+  if ($request->isMethod('put')) {
+        if($Chatter_post->update($request)) {
+            return new Chatter_postResource($Chatter_post);
+        }
+     }if ($request->isMethod('post') ) {
+        if($Chatter_post = Chatter_post::create($request) ) {
+            return new Chatter_postResource($Chatter_post);
+        }
+     }
+             
+    }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Chatter_post  $chatter_post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Chatter_post $chatter_post)
+    public function show($id)
     {
         //
     }
@@ -52,10 +68,10 @@ class ChatterPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Chatter_post  $chatter_post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chatter_post $chatter_post)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +80,10 @@ class ChatterPostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chatter_post  $chatter_post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chatter_post $chatter_post)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +91,21 @@ class ChatterPostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Chatter_post  $chatter_post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chatter_post $chatter_post)
+    public function destroy($id)
     {
         //
+    }
+
+    public function apidestroy($id)
+    { 
+      
+        $Chatter_post = Chatter_post::findOrFail($id);
+
+        if($Chatter_post->delete()) {
+            return new Chatter_postResource($Chatter_post);
+        }    
     }
 }

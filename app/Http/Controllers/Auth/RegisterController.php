@@ -47,26 +47,33 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+{
+return Validator::make($data, [
+'name' => 'required|string|max:255',
+'email' => 'required|string|max:255',
+'password' => 'required|string|min:6|confirmed',
+'address' => 'required|string|max:255',
+'phone' => 'required|string|max:100',
+'idno' => 'required|integer',
+'pin' => 'required|integer',
+'balance' => 'nullable|integer',
+'latitude' => 'nullable|integer',
+'longitude' => 'nullable|integer'
+]);
+}
+protected function create(array $data)
+{
+return User::create([
+'name' => $data['name'],
+'email' => $data['email'],
+'password' => Hash::make($data['password']),
+'address' => $data['address'],
+'phone' => $data['phone'],
+'idno' => $data['idno'],
+'pin' => $data['pin'],
+'balance' => $data['balance'],
+'latitude' => $data['latitude'],
+'longitude' => $data['longitude'],
+]);
+}
 }
